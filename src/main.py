@@ -4,12 +4,14 @@ from bird import Bird
 
 if __name__=='__main__':
     dog = Dog('babucha', 'blanco', 'poodle', 'big', 'whar!')
-    cat = Cat('gatito','grey', 'persian', 'mhaw', 8)
+    cat = Cat('gatito','grey', 'persian', 'mhaw', 11)
     bird = Bird('blue', 'blue', 'loro', 'medium', 'low')
     print(vars(dog))
     print(vars(cat))
     print(vars(bird))
     
+    cat.human_hate = 11
+        
     dog.greet()
     cat.greet()
     bird.greet()

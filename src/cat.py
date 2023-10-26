@@ -1,16 +1,31 @@
 from pet import Pet
 
 class Cat(Pet):
-    meow = str
-    human_hate = int
-    
+
     def __init__(self, name, color, race, meow, human_hate):
         self.name = name
         self.color = color
         self.race = race
         self.meow = meow
-        self.human_hate = human_hate
+        self._human_hate = human_hate
         
     def greet(self):
         print(self.name + " doesn´t even move")
         print("Says: " + self.meow)
+        
+    @property
+    def human_hate(self, value):
+        self._human_hate = value
+        
+    @human_hate.setter
+    def human_hate(self, value):
+        if value > 10:
+            print("We can't meassure more than 10 hate points")
+        else:
+            print("Setting hate...")
+            self._human_hate = value
+    
+    @human_hate.getter
+    def human_hate(self, value):
+        return self._human_hate
+        
