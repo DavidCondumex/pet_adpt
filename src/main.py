@@ -9,9 +9,7 @@ if __name__=='__main__':
     print(vars(dog))
     print(vars(cat))
     print(vars(bird))
-    
-    cat.human_hate = 11
-        
+     
     dog.greet()
     cat.greet()
     bird.greet()
