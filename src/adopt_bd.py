@@ -25,14 +25,28 @@ class MySQL_Pet_DB:
                          VALUES(%s,%s,%s)"
                      cursor.execute(query, (proxid, meassure1, attribute))
                 elif race == 'cat':
-                  query = "INSERT INTO cats (`idcats``human_hate`,`meow`)\
+                  query = "INSERT INTO cats (`idcats`,`human_hate`,`meow`)\
                       VALUES(%s,%s,%s)"
                   cursor.execute(query, (proxid, meassure1, attribute))
                 elif race == 'bird':
-                   query = "INSERT INTO birds (`idbirds``wing_size`,`fly_high`)\
+                   query = "INSERT INTO birds (`idbirds`,`wing_size`,`fly_high`)\
                       VALUES(%s,%s,%s)"
                    cursor.execute(query, (proxid, meassure1, attribute))
                 return("Pet created succesfully")
         except pymysql.ProgrammingError as e:
             print(f"Error al crear mascota {e}")
+            sys.exit()
+            
+    def consultar_mascotas(self):
+        mascotas=[]
+        try:
+            with self.mysql_connection.cursor() as cursor:
+                query = "SELECT * FROM pet"
+                cursor.execute(query)
+                for row in cursor.fetchall():
+                   mascotas.append(row)
+            
+                return mascotas
+        except pymysql.ProgrammingError as e:
+            print(f"Error al ejcutar la consulta {e}")
             sys.exit()

@@ -15,11 +15,13 @@ if __name__=='__main__':
     # dog.greet()
     # cat.greet()
     # bird.greet()
-    name = "Robin"
-    color = "grey"
+    name = "Babucha"
+    color = "White"
     race = "dog"
-    meassure1 = 8
+    meassure1 = 9
     attribute = "arhg!"
     
     db_connection.registrar_nueva_mascota(name, color, race, meassure1, attribute)
+    
+    print(db_connection.consultar_mascotas())
     
