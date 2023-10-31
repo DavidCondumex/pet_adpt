@@ -2,7 +2,7 @@ from pet import Pet
 
 class Cat(Pet):
 
-    def __init__(self, name, color, race, meow, human_hate):
+    def __init__(self, name, color, race, human_hate, meow):
         self.name = name
         self.color = color
         self.race = race
