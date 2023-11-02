@@ -1,17 +1,13 @@
 from pet import Pet
-from adopt_bd import MySQL_Pet_DB
 
 class Cat(Pet):
 
     def __init__(self, name, color, race, human_hate, meow):
-        db_connection = MySQL_Pet_DB()
         self.name = name
         self.color = color
         self.race = race
         self.meow = meow
         self._human_hate = human_hate
-        db_connection.registrar_nueva_mascota(name, color, race, human_hate, meow)
-        print(f'{name} fué creado con éxito!')
         
     def greet(self):
         print(self.name + " doesn´t even move")

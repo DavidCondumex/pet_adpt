@@ -39,11 +39,25 @@ class MySQL_Pet_DB:
              
     def traer_mascota(self, name):
         try:
+            attribute_first = {}
             with self.mysql_connection.cursor() as cursor:
                 query = f"SELECT * FROM pet WHERE name = '{name}'"
                 cursor.execute(query)
-                
-                return cursor.fetchall()
+                attribute_first = cursor.fetchall()[0]
+                if attribute_first['race'] == 'dog':
+                     query = f"SELECT ear_size, bark FROM dogs WHERE iddogs = {attribute_first['idpet']}"
+                     cursor.execute(query)
+                     attributes_2nd = cursor.fetchall()[0]
+                elif attribute_first['race'] == 'cat':
+                  query = f"SELECT human_hate, meow FROM dogs WHERE idcats = {attribute_first['idpet']}"
+                  cursor.execute(query)
+                  attributes_2nd = cursor.fetchall()[0]
+                elif attribute_first['race'] == 'bird':
+                   query = f"SELECT wing_size, flyhigh FROM dogs WHERE idbirds = {attribute_first['idpet']}"
+                   cursor.execute(query)
+                   attributes_2nd = cursor.fetchall()[0]
+            attribute_first.update(attributes_2nd)
+            return attribute_first
                 
         except pymysql.ProgrammingError as e:
             print(f"Error al ejcutar la consulta {e}")
