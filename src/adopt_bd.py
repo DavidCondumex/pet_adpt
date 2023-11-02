@@ -36,17 +36,15 @@ class MySQL_Pet_DB:
         except pymysql.ProgrammingError as e:
             print(f"Error al crear mascota {e}")
             sys.exit()
-            
-    def consultar_mascotas(self):
-        mascotas=[]
+             
+    def traer_mascota(self, name):
         try:
             with self.mysql_connection.cursor() as cursor:
-                query = "SELECT * FROM pet"
+                query = f"SELECT * FROM pet WHERE name = '{name}'"
                 cursor.execute(query)
-                for row in cursor.fetchall():
-                   mascotas.append(row)
-            
-                return mascotas
+                
+                return cursor.fetchall()
+                
         except pymysql.ProgrammingError as e:
             print(f"Error al ejcutar la consulta {e}")
             sys.exit()
