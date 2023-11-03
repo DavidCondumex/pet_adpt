@@ -62,3 +62,23 @@ class MySQL_Pet_DB:
         except pymysql.ProgrammingError as e:
             print(f"Error al ejcutar la consulta {e}")
             sys.exit()
+            
+    def lista_masoctas(self, lista):
+        try:
+            with self.mysql_connection.cursor() as cursor:
+                query = f"SELECT * FROM {lista}"
+                cursor.execute(query)
+                consulta = cursor.fetchall()
+                return consulta
+        except pymysql.ProgrammingError as e:
+            print(f"Error al ejcutar la consulta {e}")
+            sys.exit()
+            
+    def adoptar_mascota(self, name):
+        try:
+            with self.mysql_connection.cursor() as cursor:
+                query = f"DELETE FROM pet WHERE name = '{name}'"
+                cursor.execute(query)
+        except pymysql.ProgrammingError as e:
+            print(f"Error al mover mascota del sistema {e}")
+            sys.exit()
