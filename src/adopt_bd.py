@@ -49,11 +49,11 @@ class MySQL_Pet_DB:
                      cursor.execute(query)
                      attributes_2nd = cursor.fetchall()[0]
                 elif attribute_first['race'] == 'cat':
-                  query = f"SELECT human_hate, meow FROM dogs WHERE idcats = {attribute_first['idpet']}"
+                  query = f"SELECT human_hate, meow FROM cats WHERE idcats = {attribute_first['idpet']}"
                   cursor.execute(query)
                   attributes_2nd = cursor.fetchall()[0]
                 elif attribute_first['race'] == 'bird':
-                   query = f"SELECT wing_size, flyhigh FROM dogs WHERE idbirds = {attribute_first['idpet']}"
+                   query = f"SELECT wing_size, fly_high FROM birds WHERE idbirds = {attribute_first['idpet']}"
                    cursor.execute(query)
                    attributes_2nd = cursor.fetchall()[0]
             attribute_first.update(attributes_2nd)
